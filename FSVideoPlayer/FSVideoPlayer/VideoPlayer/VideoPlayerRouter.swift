@@ -14,9 +14,8 @@ class VideoPlayerRouter: VideoPlayerWireframeProtocol {
 
     weak var viewController: UIViewController?
 
-    static func createModule() -> UIViewController {
+    static func createModule(with view: VideoPlayerViewController) {
         // Change to get view from storyboard if not using progammatic UI
-        let view = VideoPlayerViewController(nibName: nil, bundle: nil)
         let interactor = VideoPlayerInteractor()
         let router = VideoPlayerRouter()
         let presenter = VideoPlayerPresenter(interface: view, interactor: interactor, router: router)
@@ -24,7 +23,5 @@ class VideoPlayerRouter: VideoPlayerWireframeProtocol {
         view.presenter = presenter
         interactor.presenter = presenter
         router.viewController = view
-
-        return view
     }
 }

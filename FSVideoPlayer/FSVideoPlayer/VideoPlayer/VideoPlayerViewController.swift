@@ -14,30 +14,147 @@ import AVFoundation
 class VideoPlayerViewController: UIViewController, VideoPlayerViewProtocol {
 
     @IBOutlet weak var videoView: UIView!
+    @IBOutlet weak var currentTimeLabel: UILabel!
+    @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var timeSlider: UISlider!
+    @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var controlView: UIView!
+    
+    private var controlTimer: Timer?
+    
+    var isVideoPlaying = false
     
     var player: AVPlayer!
     var playerLayer: AVPlayerLayer!
     
     var presenter: VideoPlayerPresenterProtocol?
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        VideoPlayerRouter.createModule(with: self)
+    }
+    
 	override func viewDidLoad() {
         super.viewDidLoad()
         
-        let url = URL(string: "http://backend.dev.fschool.altarix.org/hls/mrSsGBj7y-aMLaSSAuZTNJXbf5muI99L/jB9izF_,36,72,108,0p.m4v.urlset/master-v1-a2.m3u8")
+        let url = URL(string: "http://techslides.com/demos/sample-videos/small.mp4")
         player = AVPlayer(url: url!)
         playerLayer = AVPlayerLayer(player: player)
+        player.currentItem?.addObserver(self, forKeyPath: "duration", options: [.new, .initial], context: nil)
+        addTimeObserver()
         
         playerLayer.videoGravity = .resize
         videoView.layer.addSublayer(playerLayer)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        tap.delegate = self
+        view.addGestureRecognizer(tap)
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        player.play()
+        playAction()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         playerLayer.frame = videoView.bounds
+    }
+    
+    func addTimeObserver() {
+        guard let presenter = self.presenter else {
+            return
+        }
+        
+        let interval = CMTime(seconds: 0.5, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
+        let mainQueue = DispatchQueue.main
+        _ = player.addPeriodicTimeObserver(forInterval: interval, queue: mainQueue, using: { [weak self] time in
+            guard let currentItem = self?.player.currentItem else {return}
+            self?.timeSlider.maximumValue = Float(currentItem.duration.seconds)
+            self?.timeSlider.minimumValue = 0
+            self?.timeSlider.value = Float(currentItem.currentTime().seconds)
+            self?.currentTimeLabel.text = presenter.getTimeString(from: currentItem.currentTime())
+            if currentItem.currentTime().seconds == currentItem.duration.seconds {
+                self?.playAction()
+            }
+        })
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        guard let presenter = self.presenter else {
+            return
+        }
+        
+        if keyPath == "duration", let duration = player.currentItem?.duration.seconds, duration > 0.0 {
+            self.durationLabel.text = presenter.getTimeString(from: player.currentItem!.duration)
+        }
+    }
+    
+    @IBAction func sliderValueChanged(_ sender: UISlider) {
+        player.seek(to: CMTimeMake(Int64(sender.value*1000), 1000))
+    }
+    
+    @IBAction func onPlayButtonClick(_ sender: UIButton) {
+        playAction()
+    }
+    
+    private func playAction() {
+        if isVideoPlaying {
+            isVideoPlaying = !isVideoPlaying
+            player.pause()
+            playButton.setImage(#imageLiteral(resourceName: "playIcon"), for: .normal)
+            controlTimer?.invalidate()
+            if player.currentItem?.currentTime().seconds == player.currentItem?.duration.seconds {
+                showControlView()
+            }
+        } else {
+            isVideoPlaying = !isVideoPlaying
+            if player.currentItem?.currentTime().seconds == player.currentItem?.duration.seconds {
+                player.seek(to: CMTimeMake(0, 1000))
+            }
+            player.play()
+            playButton.setImage(#imageLiteral(resourceName: "pauseIcon"), for: .normal)
+            controlTimer?.invalidate()
+            controlTimer = Timer.scheduledTimer(timeInterval: 3,
+                                 target: self,
+                                 selector: #selector(self.hideControlView),
+                                 userInfo: nil,
+                                 repeats: false)
+        }
+    }
+}
+
+extension VideoPlayerViewController: UIGestureRecognizerDelegate {
+    @objc func handleTap(sender: UITapGestureRecognizer) {
+        if controlView.isHidden {
+            showControlView()
+        } else {
+            hideControlView()
+        }
+    }
+    
+    private func showControlView() {
+        self.controlView.isHidden = false
+        UIView.animate(withDuration: 0.2, delay: 0, options: [], animations: {
+            self.controlView.alpha = 1
+        }, completion: nil)
+        controlTimer?.invalidate()
+        if isVideoPlaying {
+            controlTimer = Timer.scheduledTimer(timeInterval: 3,
+                                 target: self,
+                                 selector: #selector(self.hideControlView),
+                                 userInfo: nil,
+                                 repeats: false)
+            
+        }
+    }
+    
+    @objc private func hideControlView() {
+        controlTimer?.invalidate()
+        UIView.animate(withDuration: 0.2, delay: 0, options: [], animations: {
+            self.controlView.alpha = 0
+        }, completion: { _ in
+            self.controlView.isHidden = true
+        })
     }
 }

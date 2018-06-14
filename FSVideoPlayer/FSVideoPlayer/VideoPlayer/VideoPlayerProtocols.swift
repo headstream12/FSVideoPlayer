@@ -9,6 +9,7 @@
 //
 
 import Foundation
+import AVFoundation
 
 //MARK: Wireframe -
 protocol VideoPlayerWireframeProtocol: class {
@@ -18,6 +19,7 @@ protocol VideoPlayerWireframeProtocol: class {
 protocol VideoPlayerPresenterProtocol: class {
 
     var interactor: VideoPlayerInteractorInputProtocol? { get set }
+    func getTimeString(from time: CMTime) -> String 
 }
 
 //MARK: Interactor -
