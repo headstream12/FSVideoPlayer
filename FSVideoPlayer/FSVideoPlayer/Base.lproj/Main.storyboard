@@ -1,24 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Video Player View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="VideoPlayerViewController" customModule="FSVideoPlayer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cUF-vD-BS0">
+                                <rect key="frame" x="0.0" y="227.5" width="375" height="211"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="cUF-vD-BS0" secondAttribute="height" multiplier="16:9" id="ucw-Uc-OP9"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k9F-4D-nid">
+                                <rect key="frame" x="0.0" y="597" width="375" height="70"/>
+                                <subviews>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="eha-pi-1LC">
+                                        <rect key="frame" x="67" y="20.5" width="201" height="31"/>
+                                        <color key="minimumTrackTintColor" red="0.93333333330000001" green="0.70588235290000001" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="thumbTintColor" red="0.93333333330000001" green="0.70588235290000001" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
+                                    </slider>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GWr-EW-fp1">
+                                        <rect key="frame" x="20" y="27.5" width="34" height="15"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="05:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tBy-8y-TF8">
+                                        <rect key="frame" x="281" y="27.5" width="34" height="15"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gTY-dv-UK4">
+                                        <rect key="frame" x="335" y="25" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="0dN-D4-SVP"/>
+                                            <constraint firstAttribute="width" constant="20" id="bzr-4Z-BLc"/>
+                                        </constraints>
+                                        <state key="normal" image="fullscreenIcon"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="0AI-qW-Nvi"/>
+                                    <constraint firstItem="gTY-dv-UK4" firstAttribute="centerY" secondItem="k9F-4D-nid" secondAttribute="centerY" id="35h-cL-p2g"/>
+                                    <constraint firstItem="GWr-EW-fp1" firstAttribute="leading" secondItem="k9F-4D-nid" secondAttribute="leading" constant="20" id="8oe-zC-Nvf"/>
+                                    <constraint firstItem="eha-pi-1LC" firstAttribute="leading" secondItem="GWr-EW-fp1" secondAttribute="trailing" constant="15" id="9rj-kR-Jhc"/>
+                                    <constraint firstItem="tBy-8y-TF8" firstAttribute="leading" secondItem="eha-pi-1LC" secondAttribute="trailing" constant="15" id="F12-yI-wPU"/>
+                                    <constraint firstItem="GWr-EW-fp1" firstAttribute="centerY" secondItem="k9F-4D-nid" secondAttribute="centerY" id="SMO-J4-bKk"/>
+                                    <constraint firstItem="eha-pi-1LC" firstAttribute="centerY" secondItem="k9F-4D-nid" secondAttribute="centerY" id="SN3-SX-HQf"/>
+                                    <constraint firstAttribute="trailing" secondItem="gTY-dv-UK4" secondAttribute="trailing" constant="20" id="mmf-63-Wc1"/>
+                                    <constraint firstItem="tBy-8y-TF8" firstAttribute="centerY" secondItem="k9F-4D-nid" secondAttribute="centerY" id="qI2-tx-3sg"/>
+                                    <constraint firstItem="gTY-dv-UK4" firstAttribute="leading" secondItem="tBy-8y-TF8" secondAttribute="trailing" constant="20" id="sHq-FB-5bh"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.14901960780000001" green="0.12941176469999999" blue="0.17254901959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cUF-vD-BS0" secondAttribute="trailing" id="Ikw-YW-xvZ"/>
+                            <constraint firstItem="k9F-4D-nid" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="KOi-PH-34k"/>
+                            <constraint firstItem="cUF-vD-BS0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KSN-zC-4yn"/>
+                            <constraint firstItem="cUF-vD-BS0" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Yhb-kM-VxT"/>
+                            <constraint firstItem="k9F-4D-nid" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="e7v-UH-8W2"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="k9F-4D-nid" secondAttribute="trailing" id="n5c-Xr-wmW"/>
+                            <constraint firstItem="cUF-vD-BS0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zYm-s7-w7a"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="videoView" destination="cUF-vD-BS0" id="mlI-yp-Eub"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="32.799999999999997" y="31.934032983508249"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="fullscreenIcon" width="24" height="24"/>
+    </resources>
 </document>

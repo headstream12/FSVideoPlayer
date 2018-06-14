@@ -8,11 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		B0FC25E920D25F3C009E72D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FC25E820D25F3C009E72D4 /* AppDelegate.swift */; };
-		B0FC25EB20D25F3C009E72D4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FC25EA20D25F3C009E72D4 /* ViewController.swift */; };
 		B0FC25EE20D25F3C009E72D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0FC25EC20D25F3C009E72D4 /* Main.storyboard */; };
 		B0FC25F020D25F3E009E72D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0FC25EF20D25F3E009E72D4 /* Assets.xcassets */; };
 		B0FC25F320D25F3E009E72D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0FC25F120D25F3E009E72D4 /* LaunchScreen.storyboard */; };
 		B0FC25FE20D25F3E009E72D4 /* FSVideoPlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FC25FD20D25F3E009E72D4 /* FSVideoPlayerTests.swift */; };
+		B0FC262420D2604D009E72D4 /* VideoPlayerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FC261820D2604D009E72D4 /* VideoPlayerInteractor.swift */; };
+		B0FC262520D2604D009E72D4 /* VideoPlayerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FC261920D2604D009E72D4 /* VideoPlayerRouter.swift */; };
+		B0FC262620D2604D009E72D4 /* VideoPlayerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FC261A20D2604D009E72D4 /* VideoPlayerPresenter.swift */; };
+		B0FC262820D2604D009E72D4 /* VideoPlayerProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FC261C20D2604D009E72D4 /* VideoPlayerProtocols.swift */; };
+		B0FC262920D2604D009E72D4 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FC261D20D2604D009E72D4 /* VideoPlayerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,7 +32,6 @@
 /* Begin PBXFileReference section */
 		B0FC25E520D25F3C009E72D4 /* FSVideoPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FSVideoPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0FC25E820D25F3C009E72D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B0FC25EA20D25F3C009E72D4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B0FC25ED20D25F3C009E72D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B0FC25EF20D25F3E009E72D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B0FC25F220D25F3E009E72D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,6 +39,11 @@
 		B0FC25F920D25F3E009E72D4 /* FSVideoPlayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FSVideoPlayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0FC25FD20D25F3E009E72D4 /* FSVideoPlayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSVideoPlayerTests.swift; sourceTree = "<group>"; };
 		B0FC25FF20D25F3E009E72D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B0FC261820D2604D009E72D4 /* VideoPlayerInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerInteractor.swift; sourceTree = "<group>"; };
+		B0FC261920D2604D009E72D4 /* VideoPlayerRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerRouter.swift; sourceTree = "<group>"; };
+		B0FC261A20D2604D009E72D4 /* VideoPlayerPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerPresenter.swift; sourceTree = "<group>"; };
+		B0FC261C20D2604D009E72D4 /* VideoPlayerProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerProtocols.swift; sourceTree = "<group>"; };
+		B0FC261D20D2604D009E72D4 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				B0FC25E820D25F3C009E72D4 /* AppDelegate.swift */,
-				B0FC25EA20D25F3C009E72D4 /* ViewController.swift */,
+				B0FC261720D2604C009E72D4 /* VideoPlayer */,
 				B0FC25EC20D25F3C009E72D4 /* Main.storyboard */,
 				B0FC25EF20D25F3E009E72D4 /* Assets.xcassets */,
 				B0FC25F120D25F3E009E72D4 /* LaunchScreen.storyboard */,
@@ -94,6 +102,18 @@
 				B0FC25FF20D25F3E009E72D4 /* Info.plist */,
 			);
 			path = FSVideoPlayerTests;
+			sourceTree = "<group>";
+		};
+		B0FC261720D2604C009E72D4 /* VideoPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				B0FC261820D2604D009E72D4 /* VideoPlayerInteractor.swift */,
+				B0FC261920D2604D009E72D4 /* VideoPlayerRouter.swift */,
+				B0FC261A20D2604D009E72D4 /* VideoPlayerPresenter.swift */,
+				B0FC261C20D2604D009E72D4 /* VideoPlayerProtocols.swift */,
+				B0FC261D20D2604D009E72D4 /* VideoPlayerViewController.swift */,
+			);
+			path = VideoPlayer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,8 +217,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0FC25EB20D25F3C009E72D4 /* ViewController.swift in Sources */,
 				B0FC25E920D25F3C009E72D4 /* AppDelegate.swift in Sources */,
+				B0FC262920D2604D009E72D4 /* VideoPlayerViewController.swift in Sources */,
+				B0FC262420D2604D009E72D4 /* VideoPlayerInteractor.swift in Sources */,
+				B0FC262520D2604D009E72D4 /* VideoPlayerRouter.swift in Sources */,
+				B0FC262820D2604D009E72D4 /* VideoPlayerProtocols.swift in Sources */,
+				B0FC262620D2604D009E72D4 /* VideoPlayerPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
