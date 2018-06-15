@@ -19,6 +19,7 @@ class VideoPlayerViewController: UIViewController, VideoPlayerViewProtocol {
     @IBOutlet weak var timeSlider: UISlider!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var controlView: UIView!
+    @IBOutlet weak var navigationBar: UINavigationBar!
     
     private var controlTimer: Timer?
     
@@ -37,7 +38,7 @@ class VideoPlayerViewController: UIViewController, VideoPlayerViewProtocol {
 	override func viewDidLoad() {
         super.viewDidLoad()
         
-        let url = URL(string: "http://techslides.com/demos/sample-videos/small.mp4")
+        let url = URL(string: "https://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_10mb.mp4")
         player = AVPlayer(url: url!)
         playerLayer = AVPlayerLayer(player: player)
         player.currentItem?.addObserver(self, forKeyPath: "duration", options: [.new, .initial], context: nil)
@@ -50,10 +51,17 @@ class VideoPlayerViewController: UIViewController, VideoPlayerViewProtocol {
         tap.delegate = self
         view.addGestureRecognizer(tap)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationBar.setNavigationBarTransluent()
+        UIApplication.shared.statusBarStyle = .lightContent
+        UIApplication.shared.statusBarView?.backgroundColor = UIColor.black.withAlphaComponent(0.24)
+    }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        playAction()
+        //playAction()
     }
     
     override func viewDidLayoutSubviews() {
@@ -91,7 +99,12 @@ class VideoPlayerViewController: UIViewController, VideoPlayerViewProtocol {
     }
     
     @IBAction func sliderValueChanged(_ sender: UISlider) {
+        controlTimer?.invalidate()
         player.seek(to: CMTimeMake(Int64(sender.value*1000), 1000))
+        if isVideoPlaying {
+            controlTimer = getHideControlViewTimer()
+
+        }
     }
     
     @IBAction func onPlayButtonClick(_ sender: UIButton) {
@@ -115,12 +128,16 @@ class VideoPlayerViewController: UIViewController, VideoPlayerViewProtocol {
             player.play()
             playButton.setImage(#imageLiteral(resourceName: "pauseIcon"), for: .normal)
             controlTimer?.invalidate()
-            controlTimer = Timer.scheduledTimer(timeInterval: 3,
-                                 target: self,
-                                 selector: #selector(self.hideControlView),
-                                 userInfo: nil,
-                                 repeats: false)
+            controlTimer = getHideControlViewTimer()
         }
+    }
+    
+    private func getHideControlViewTimer() -> Timer {
+        return Timer.scheduledTimer(timeInterval: 3,
+                                    target: self,
+                                    selector: #selector(self.hideControlView),
+                                    userInfo: nil,
+                                    repeats: false)
     }
 }
 
@@ -137,15 +154,11 @@ extension VideoPlayerViewController: UIGestureRecognizerDelegate {
         self.controlView.isHidden = false
         UIView.animate(withDuration: 0.2, delay: 0, options: [], animations: {
             self.controlView.alpha = 1
+            UIApplication.shared.statusBarView?.backgroundColor = UIColor.black.withAlphaComponent(0.24)
         }, completion: nil)
         controlTimer?.invalidate()
         if isVideoPlaying {
-            controlTimer = Timer.scheduledTimer(timeInterval: 3,
-                                 target: self,
-                                 selector: #selector(self.hideControlView),
-                                 userInfo: nil,
-                                 repeats: false)
-            
+            controlTimer = getHideControlViewTimer()
         }
     }
     
@@ -153,6 +166,7 @@ extension VideoPlayerViewController: UIGestureRecognizerDelegate {
         controlTimer?.invalidate()
         UIView.animate(withDuration: 0.2, delay: 0, options: [], animations: {
             self.controlView.alpha = 0
+            UIApplication.shared.statusBarView?.backgroundColor = #colorLiteral(red: 0.1490196078, green: 0.1294117647, blue: 0.1725490196, alpha: 1)
         }, completion: { _ in
             self.controlView.isHidden = true
         })

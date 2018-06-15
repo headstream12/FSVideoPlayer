@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B02724F620D3B8E300C60A74 /* UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02724F520D3B8E300C60A74 /* UINavigationBar.swift */; };
+		B02724F820D3BAEA00C60A74 /* UIAplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02724F720D3BAEA00C60A74 /* UIAplication.swift */; };
 		B0FC25E920D25F3C009E72D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FC25E820D25F3C009E72D4 /* AppDelegate.swift */; };
 		B0FC25EE20D25F3C009E72D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0FC25EC20D25F3C009E72D4 /* Main.storyboard */; };
 		B0FC25F020D25F3E009E72D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0FC25EF20D25F3E009E72D4 /* Assets.xcassets */; };
@@ -30,6 +32,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B02724F520D3B8E300C60A74 /* UINavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationBar.swift; sourceTree = "<group>"; };
+		B02724F720D3BAEA00C60A74 /* UIAplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAplication.swift; sourceTree = "<group>"; };
 		B0FC25E520D25F3C009E72D4 /* FSVideoPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FSVideoPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0FC25E820D25F3C009E72D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0FC25ED20D25F3C009E72D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -64,6 +68,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B02724F420D3B8C200C60A74 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B02724F520D3B8E300C60A74 /* UINavigationBar.swift */,
+				B02724F720D3BAEA00C60A74 /* UIAplication.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		B0FC25DC20D25F3C009E72D4 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +98,7 @@
 		B0FC25E720D25F3C009E72D4 /* FSVideoPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				B02724F420D3B8C200C60A74 /* Extensions */,
 				B0FC25E820D25F3C009E72D4 /* AppDelegate.swift */,
 				B0FC261720D2604C009E72D4 /* VideoPlayer */,
 				B0FC25EC20D25F3C009E72D4 /* Main.storyboard */,
@@ -221,8 +235,10 @@
 				B0FC262920D2604D009E72D4 /* VideoPlayerViewController.swift in Sources */,
 				B0FC262420D2604D009E72D4 /* VideoPlayerInteractor.swift in Sources */,
 				B0FC262520D2604D009E72D4 /* VideoPlayerRouter.swift in Sources */,
+				B02724F620D3B8E300C60A74 /* UINavigationBar.swift in Sources */,
 				B0FC262820D2604D009E72D4 /* VideoPlayerProtocols.swift in Sources */,
 				B0FC262620D2604D009E72D4 /* VideoPlayerPresenter.swift in Sources */,
+				B02724F820D3BAEA00C60A74 /* UIAplication.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

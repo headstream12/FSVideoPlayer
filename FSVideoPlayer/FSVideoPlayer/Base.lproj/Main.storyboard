@@ -68,16 +68,30 @@
                                             <action selector="onPlayButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="A0H-On-UW7"/>
                                         </connections>
                                     </button>
+                                    <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rDz-N6-aOI">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <color key="backgroundColor" red="0.14901960780000001" green="0.12941176469999999" blue="0.17254901959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="barTintColor" red="0.14901960780000001" green="0.12941176469999999" blue="0.17254901959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <textAttributes key="titleTextAttributes">
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </textAttributes>
+                                        <items>
+                                            <navigationItem title="Title" id="0iA-eY-3j5"/>
+                                        </items>
+                                    </navigationBar>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.23547196061643835" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.23999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="GWr-EW-fp1" secondAttribute="bottom" constant="27.5" id="8lg-P3-7HQ"/>
                                     <constraint firstItem="GWr-EW-fp1" firstAttribute="leading" secondItem="k9F-4D-nid" secondAttribute="leading" constant="20" id="8oe-zC-Nvf"/>
                                     <constraint firstItem="eha-pi-1LC" firstAttribute="leading" secondItem="GWr-EW-fp1" secondAttribute="trailing" constant="15" id="9rj-kR-Jhc"/>
+                                    <constraint firstAttribute="trailing" secondItem="rDz-N6-aOI" secondAttribute="trailing" id="BQx-DP-4VE"/>
                                     <constraint firstItem="tBy-8y-TF8" firstAttribute="leading" secondItem="eha-pi-1LC" secondAttribute="trailing" constant="15" id="F12-yI-wPU"/>
                                     <constraint firstItem="JhX-gh-CZr" firstAttribute="centerY" secondItem="k9F-4D-nid" secondAttribute="centerY" id="FFC-0a-Xdd"/>
                                     <constraint firstAttribute="bottom" secondItem="gTY-dv-UK4" secondAttribute="bottom" constant="25" id="KGS-fi-eat"/>
                                     <constraint firstItem="JhX-gh-CZr" firstAttribute="centerX" secondItem="k9F-4D-nid" secondAttribute="centerX" id="KTB-1t-o6R"/>
+                                    <constraint firstItem="rDz-N6-aOI" firstAttribute="leading" secondItem="k9F-4D-nid" secondAttribute="leading" id="PPj-oR-0cK"/>
+                                    <constraint firstItem="rDz-N6-aOI" firstAttribute="top" secondItem="k9F-4D-nid" secondAttribute="top" id="WPo-8d-L2F"/>
                                     <constraint firstAttribute="bottom" secondItem="tBy-8y-TF8" secondAttribute="bottom" constant="27.5" id="g6n-NP-dSO"/>
                                     <constraint firstAttribute="bottom" secondItem="eha-pi-1LC" secondAttribute="bottom" constant="19.5" id="lN7-uN-XR9"/>
                                     <constraint firstAttribute="trailing" secondItem="gTY-dv-UK4" secondAttribute="trailing" constant="20" id="mmf-63-Wc1"/>
@@ -102,6 +116,7 @@
                         <outlet property="controlView" destination="k9F-4D-nid" id="moC-lh-6wC"/>
                         <outlet property="currentTimeLabel" destination="GWr-EW-fp1" id="cg6-Y5-kK7"/>
                         <outlet property="durationLabel" destination="tBy-8y-TF8" id="AwK-zm-OTc"/>
+                        <outlet property="navigationBar" destination="rDz-N6-aOI" id="Dcl-qf-WKI"/>
                         <outlet property="playButton" destination="JhX-gh-CZr" id="4Gz-rU-lya"/>
                         <outlet property="timeSlider" destination="eha-pi-1LC" id="bwm-Ea-6qI"/>
                         <outlet property="videoView" destination="cUF-vD-BS0" id="mlI-yp-Eub"/>
