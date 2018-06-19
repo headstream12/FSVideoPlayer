@@ -12,7 +12,6 @@ import UIKit
 import AVFoundation
 
 class VideoPlayerPresenter: VideoPlayerPresenterProtocol {
-
     weak private var view: VideoPlayerViewProtocol?
     var interactor: VideoPlayerInteractorInputProtocol?
     private let router: VideoPlayerWireframeProtocol
@@ -30,12 +29,58 @@ class VideoPlayerPresenter: VideoPlayerPresenterProtocol {
         let seconds = Int(totalSeconds.truncatingRemainder(dividingBy: 60))
         if hours > 0 {
             return String(format: "%i:%02i:%02i", arguments: [hours,minutes,seconds])
-        }else {
+        } else {
             return String(format: "%02i:%02i", arguments: [minutes,seconds])
+        }
+    }
+    
+    func onSettingButtonClick() {
+        guard interactor != nil else {
+            return
+        }
+        
+        var variants: [(text: String, action: ((CustomAlertAction) ->Void)?)]? = interactor?.urls.map { [unowned self] resolution, url in
+            (text: self.getTextTitleForResolution(resolution), action: { [unowned self] _ in
+                self.view?.playVideoWithUrl(url)
+            })
+        }
+        
+        variants = variants?.sorted(by: { Float($0.text) ?? 0 < Float($1.text) ?? 0})
+        
+        let variantAuto: (text: String, action: ((CustomAlertAction) ->Void)?) = (text: "Auto", action: nil)
+        variants?.insert(variantAuto, at: 0)
+        
+        view?.showVariants(title: "Select the quality option", cancelText: "Cancel", variants: variants ?? [])
+    }
+    
+    func viewDidLoadWith(url: URL?) {
+        guard let url = url else {
+            return
+        }
+        
+        interactor?.parsePlaylistWithUrl(url)
+    }
+    
+    private func getTextTitleForResolution(_ resolution: VideoPlayerInteractor.Resolution) -> String {
+        switch resolution {
+        case .low:
+            return "320"
+        case .medium:
+            return "480"
+        case .hd:
+            return "720"
+        case .fullHd:
+            return "1080"
         }
     }
 }
 
 extension VideoPlayerPresenter: VideoPlayerInteractorOutputProtocol {
+    func onParseUrlSuccess(preferredResolutionUrl: URL) {
+        view?.playVideoWithUrl(preferredResolutionUrl)
+    }
     
+    func onParseUrlError(_ error: Error) {
+        view?.showError(error)
+    }
 }

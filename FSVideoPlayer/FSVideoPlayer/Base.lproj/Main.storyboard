@@ -76,7 +76,13 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </textAttributes>
                                         <items>
-                                            <navigationItem title="Title" id="0iA-eY-3j5"/>
+                                            <navigationItem title="Title" id="0iA-eY-3j5">
+                                                <barButtonItem key="rightBarButtonItem" image="settingIcon" id="wd7-cd-a9g">
+                                                    <connections>
+                                                        <action selector="onSettingButtonClick:" destination="BYZ-38-t0r" id="Z4t-oc-fdw"/>
+                                                    </connections>
+                                                </barButtonItem>
+                                            </navigationItem>
                                         </items>
                                     </navigationBar>
                                 </subviews>
@@ -118,6 +124,7 @@
                         <outlet property="durationLabel" destination="tBy-8y-TF8" id="AwK-zm-OTc"/>
                         <outlet property="navigationBar" destination="rDz-N6-aOI" id="Dcl-qf-WKI"/>
                         <outlet property="playButton" destination="JhX-gh-CZr" id="4Gz-rU-lya"/>
+                        <outlet property="settingButton" destination="wd7-cd-a9g" id="BQh-dW-7nC"/>
                         <outlet property="timeSlider" destination="eha-pi-1LC" id="bwm-Ea-6qI"/>
                         <outlet property="videoView" destination="cUF-vD-BS0" id="mlI-yp-Eub"/>
                     </connections>
@@ -130,5 +137,6 @@
     <resources>
         <image name="fullscreenIcon" width="24" height="24"/>
         <image name="playIcon" width="96" height="96"/>
+        <image name="settingIcon" width="24" height="24"/>
     </resources>
 </document>

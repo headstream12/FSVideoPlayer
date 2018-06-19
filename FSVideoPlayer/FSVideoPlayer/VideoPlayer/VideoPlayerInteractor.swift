@@ -9,8 +9,46 @@
 //
 
 import UIKit
+import GoSwiftyM3U8
 
 class VideoPlayerInteractor: VideoPlayerInteractorInputProtocol {
-
+    var urls: [VideoPlayerInteractor.Resolution: URL] = [:]
+    
     weak var presenter: VideoPlayerInteractorOutputProtocol?
+    
+    enum Resolution: String {
+        case low = "640x360"
+        case medium = "854х480"
+        case hd = "1280x720"
+        case fullHd = "1920x1080"
+    }
+    
+    func chooseResolution(_ resolution: VideoPlayerInteractor.Resolution) {
+    }
+    
+    func parsePlaylistWithUrl(_ url: URL) {
+        let manager = M3U8Manager()
+        let params = PlaylistOperation.Params(fetcher: nil, url: url, playlistType: .master)
+        let operationData = M3U8Manager.PlaylistOperationData(params: params, extraParams: nil)
+        let playlistType = MasterPlaylist.self
+        manager.fetchAndParsePlaylist(from: operationData, playlistType: playlistType) { [unowned self] result in
+            switch result {
+            case .success(let playlist):
+                playlist.tags.streamTags.forEach {
+                    if let url = URL(string: $0.uri) {
+                        self.urls[Resolution.init(rawValue: $0.resolution) ?? .fullHd] = url
+                    }
+                }
+                DispatchQueue.main.async {
+                    self.presenter?.onParseUrlSuccess(preferredResolutionUrl: self.urls[Resolution.fullHd]!)
+                }
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self.presenter?.onParseUrlError(error!) //TODO: Разобраться с error
+                }
+            case .cancelled: break
+            }
+        }
+    }
 }
+

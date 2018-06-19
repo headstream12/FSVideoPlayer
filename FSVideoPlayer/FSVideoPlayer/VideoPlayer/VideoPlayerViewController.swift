@@ -11,7 +11,7 @@
 import UIKit
 import AVFoundation
 
-class VideoPlayerViewController: UIViewController, VideoPlayerViewProtocol {
+class VideoPlayerViewController: UIViewController {
 
     @IBOutlet weak var videoView: UIView!
     @IBOutlet weak var currentTimeLabel: UILabel!
@@ -20,13 +20,15 @@ class VideoPlayerViewController: UIViewController, VideoPlayerViewProtocol {
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var controlView: UIView!
     @IBOutlet weak var navigationBar: UINavigationBar!
+    @IBOutlet weak var settingButton: UIBarButtonItem!
     
     private var controlTimer: Timer?
+    private var isVideoPlaying = false
+    private var currentTime: CMTime?
+    private var player: AVPlayer!
+    private var playerLayer: AVPlayerLayer!
     
-    var isVideoPlaying = false
-    
-    var player: AVPlayer!
-    var playerLayer: AVPlayerLayer!
+    var playlistUrl: URL? = URL(string: "http://backend.dev.fschool.altarix.org/hls/vSqyu3G37dQvsSph1QPBjl4k9kdRAYFk/eH5e1N_,36,72,108,0p.m4v.urlset/master-v1-a2.m3u8")!
     
     var presenter: VideoPlayerPresenterProtocol?
 
@@ -38,18 +40,20 @@ class VideoPlayerViewController: UIViewController, VideoPlayerViewProtocol {
 	override func viewDidLoad() {
         super.viewDidLoad()
         
-        let url = URL(string: "https://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_10mb.mp4")
-        player = AVPlayer(url: url!)
-        playerLayer = AVPlayerLayer(player: player)
+        player = AVPlayer(url: URL(string: "https://www.123test123.ru")!)
         player.currentItem?.addObserver(self, forKeyPath: "duration", options: [.new, .initial], context: nil)
         addTimeObserver()
         
+        playerLayer = AVPlayerLayer(player: nil)
         playerLayer.videoGravity = .resize
         videoView.layer.addSublayer(playerLayer)
-        
+
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         tap.delegate = self
         view.addGestureRecognizer(tap)
+        
+        settingButton.image = #imageLiteral(resourceName: "settingIcon").withRenderingMode(.alwaysOriginal)
+        presenter?.viewDidLoadWith(url: playlistUrl)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,11 +61,6 @@ class VideoPlayerViewController: UIViewController, VideoPlayerViewProtocol {
         navigationBar.setNavigationBarTransluent()
         UIApplication.shared.statusBarStyle = .lightContent
         UIApplication.shared.statusBarView?.backgroundColor = UIColor.black.withAlphaComponent(0.24)
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        //playAction()
     }
     
     override func viewDidLayoutSubviews() {
@@ -78,11 +77,12 @@ class VideoPlayerViewController: UIViewController, VideoPlayerViewProtocol {
         let mainQueue = DispatchQueue.main
         _ = player.addPeriodicTimeObserver(forInterval: interval, queue: mainQueue, using: { [weak self] time in
             guard let currentItem = self?.player.currentItem else {return}
-            self?.timeSlider.maximumValue = Float(currentItem.duration.seconds)
+            //self?.timeSlider.maximumValue = Float(currentItem.duration.seconds)
+            self?.currentTime = currentItem.currentTime()
             self?.timeSlider.minimumValue = 0
             self?.timeSlider.value = Float(currentItem.currentTime().seconds)
             self?.currentTimeLabel.text = presenter.getTimeString(from: currentItem.currentTime())
-            if currentItem.currentTime().seconds == currentItem.duration.seconds {
+            if currentItem.currentTime().seconds.rounded(toPlaces: 2) == currentItem.duration.seconds.rounded(toPlaces: 2) {
                 self?.playAction()
             }
         })
@@ -95,6 +95,7 @@ class VideoPlayerViewController: UIViewController, VideoPlayerViewProtocol {
         
         if keyPath == "duration", let duration = player.currentItem?.duration.seconds, duration > 0.0 {
             self.durationLabel.text = presenter.getTimeString(from: player.currentItem!.duration)
+            self.timeSlider.maximumValue = Float(player.currentItem!.duration.seconds)
         }
     }
     
@@ -103,12 +104,15 @@ class VideoPlayerViewController: UIViewController, VideoPlayerViewProtocol {
         player.seek(to: CMTimeMake(Int64(sender.value*1000), 1000))
         if isVideoPlaying {
             controlTimer = getHideControlViewTimer()
-
         }
     }
     
     @IBAction func onPlayButtonClick(_ sender: UIButton) {
         playAction()
+    }
+    
+    @IBAction func onSettingButtonClick(_ sender: UIBarButtonItem) {
+        presenter?.onSettingButtonClick()
     }
     
     private func playAction() {
@@ -117,12 +121,12 @@ class VideoPlayerViewController: UIViewController, VideoPlayerViewProtocol {
             player.pause()
             playButton.setImage(#imageLiteral(resourceName: "playIcon"), for: .normal)
             controlTimer?.invalidate()
-            if player.currentItem?.currentTime().seconds == player.currentItem?.duration.seconds {
+            if player.currentItem?.currentTime().seconds.rounded(toPlaces: 2) == player.currentItem?.duration.seconds.rounded(toPlaces: 2) {
                 showControlView()
             }
         } else {
             isVideoPlaying = !isVideoPlaying
-            if player.currentItem?.currentTime().seconds == player.currentItem?.duration.seconds {
+            if player.currentItem?.currentTime().seconds.rounded(toPlaces: 2) == player.currentItem?.duration.seconds.rounded(toPlaces: 2) {
                 player.seek(to: CMTimeMake(0, 1000))
             }
             player.play()
@@ -138,6 +142,36 @@ class VideoPlayerViewController: UIViewController, VideoPlayerViewProtocol {
                                     selector: #selector(self.hideControlView),
                                     userInfo: nil,
                                     repeats: false)
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return false
+    }
+}
+
+extension VideoPlayerViewController: VideoPlayerViewProtocol {
+    func playVideoWithUrl(_ url: URL) {
+        player.currentItem?.removeObserver(self, forKeyPath: "duration")
+
+        let newItem = AVPlayerItem(url: url)
+        if currentTime != nil {
+            newItem.seek(to: currentTime!, toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero, completionHandler: nil)
+        }
+        
+        player.replaceCurrentItem(with: newItem)
+        player.currentItem?.addObserver(self, forKeyPath: "duration", options: [.new, .initial], context: nil)
+        
+        if playerLayer.player == nil {
+            playerLayer.player = player
+        }
+        
+        if !isVideoPlaying {
+            playAction()
+        }
+    }
+    
+    func showError(_ error: Error) {
+        //
     }
 }
 

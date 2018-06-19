@@ -7,8 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7FC6B5BDFCEC1FE6427291BE /* Pods_FSVideoPlayerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA2BE21C6BC11B0DCE66ECB /* Pods_FSVideoPlayerTests.framework */; };
+		AA3332714B3FB0C55A295947 /* Pods_FSVideoPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8D756D82646C0C02929757 /* Pods_FSVideoPlayer.framework */; };
 		B02724F620D3B8E300C60A74 /* UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02724F520D3B8E300C60A74 /* UINavigationBar.swift */; };
 		B02724F820D3BAEA00C60A74 /* UIAplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02724F720D3BAEA00C60A74 /* UIAplication.swift */; };
+		B027250A20D3C8B600C60A74 /* CustomActionSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02724FC20D3C8B600C60A74 /* CustomActionSheetController.swift */; };
+		B027250B20D3C8B600C60A74 /* AlertButtonBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02724FF20D3C8B600C60A74 /* AlertButtonBuilder.swift */; };
+		B027250C20D3C8B600C60A74 /* TextAlertBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B027250020D3C8B600C60A74 /* TextAlertBuilder.swift */; };
+		B027250D20D3C8B600C60A74 /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B027250120D3C8B600C60A74 /* CustomAlertView.swift */; };
+		B027250E20D3C8B600C60A74 /* CustomAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B027250220D3C8B600C60A74 /* CustomAlertViewController.swift */; };
+		B027250F20D3C8B600C60A74 /* CustomAlertHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B027250420D3C8B600C60A74 /* CustomAlertHeaderView.swift */; };
+		B027251020D3C8B600C60A74 /* CustomAlertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B027250520D3C8B600C60A74 /* CustomAlertTableViewCell.swift */; };
+		B027251120D3C8B600C60A74 /* CancelButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B027250620D3C8B600C60A74 /* CancelButtonView.swift */; };
+		B027251220D3C8B600C60A74 /* AlertControllerTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = B027250720D3C8B600C60A74 /* AlertControllerTransition.swift */; };
+		B027251320D3C8B600C60A74 /* CustomAlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B027250820D3C8B600C60A74 /* CustomAlertAction.swift */; };
+		B027251420D3C8B600C60A74 /* CustomAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B027250920D3C8B600C60A74 /* CustomAlertController.swift */; };
+		B027251720D3C8DE00C60A74 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B027251620D3C8DE00C60A74 /* UIViewController.swift */; };
+		B02DF6BD20D9325E00166223 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02DF6BC20D9325E00166223 /* Double.swift */; };
+		B0F8268820D3CAF500FE849B /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F8268720D3CAF500FE849B /* UIColor.swift */; };
+		B0F8268A20D3CB9B00FE849B /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F8268920D3CB9B00FE849B /* UIStackView.swift */; };
 		B0FC25E920D25F3C009E72D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FC25E820D25F3C009E72D4 /* AppDelegate.swift */; };
 		B0FC25EE20D25F3C009E72D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0FC25EC20D25F3C009E72D4 /* Main.storyboard */; };
 		B0FC25F020D25F3E009E72D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0FC25EF20D25F3E009E72D4 /* Assets.xcassets */; };
@@ -32,8 +49,26 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18064EFF09D663A865D875D9 /* Pods-FSVideoPlayerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FSVideoPlayerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FSVideoPlayerTests/Pods-FSVideoPlayerTests.release.xcconfig"; sourceTree = "<group>"; };
+		A7EA69020C058B5649DBA1D9 /* Pods-FSVideoPlayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FSVideoPlayer.release.xcconfig"; path = "Pods/Target Support Files/Pods-FSVideoPlayer/Pods-FSVideoPlayer.release.xcconfig"; sourceTree = "<group>"; };
+		AD8D756D82646C0C02929757 /* Pods_FSVideoPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FSVideoPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B02724F520D3B8E300C60A74 /* UINavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationBar.swift; sourceTree = "<group>"; };
 		B02724F720D3BAEA00C60A74 /* UIAplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAplication.swift; sourceTree = "<group>"; };
+		B02724FC20D3C8B600C60A74 /* CustomActionSheetController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomActionSheetController.swift; sourceTree = "<group>"; };
+		B02724FF20D3C8B600C60A74 /* AlertButtonBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertButtonBuilder.swift; sourceTree = "<group>"; };
+		B027250020D3C8B600C60A74 /* TextAlertBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextAlertBuilder.swift; sourceTree = "<group>"; };
+		B027250120D3C8B600C60A74 /* CustomAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
+		B027250220D3C8B600C60A74 /* CustomAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAlertViewController.swift; sourceTree = "<group>"; };
+		B027250420D3C8B600C60A74 /* CustomAlertHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAlertHeaderView.swift; sourceTree = "<group>"; };
+		B027250520D3C8B600C60A74 /* CustomAlertTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAlertTableViewCell.swift; sourceTree = "<group>"; };
+		B027250620D3C8B600C60A74 /* CancelButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelButtonView.swift; sourceTree = "<group>"; };
+		B027250720D3C8B600C60A74 /* AlertControllerTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertControllerTransition.swift; sourceTree = "<group>"; };
+		B027250820D3C8B600C60A74 /* CustomAlertAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAlertAction.swift; sourceTree = "<group>"; };
+		B027250920D3C8B600C60A74 /* CustomAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAlertController.swift; sourceTree = "<group>"; };
+		B027251620D3C8DE00C60A74 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		B02DF6BC20D9325E00166223 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		B0F8268720D3CAF500FE849B /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		B0F8268920D3CB9B00FE849B /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		B0FC25E520D25F3C009E72D4 /* FSVideoPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FSVideoPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0FC25E820D25F3C009E72D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0FC25ED20D25F3C009E72D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -48,6 +83,9 @@
 		B0FC261A20D2604D009E72D4 /* VideoPlayerPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerPresenter.swift; sourceTree = "<group>"; };
 		B0FC261C20D2604D009E72D4 /* VideoPlayerProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerProtocols.swift; sourceTree = "<group>"; };
 		B0FC261D20D2604D009E72D4 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
+		B2A4B11C22DA7074A576A2CE /* Pods-FSVideoPlayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FSVideoPlayer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FSVideoPlayer/Pods-FSVideoPlayer.debug.xcconfig"; sourceTree = "<group>"; };
+		EDA2BE21C6BC11B0DCE66ECB /* Pods_FSVideoPlayerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FSVideoPlayerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1E91E09B57425B2F8409266 /* Pods-FSVideoPlayerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FSVideoPlayerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FSVideoPlayerTests/Pods-FSVideoPlayerTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA3332714B3FB0C55A295947 /* Pods_FSVideoPlayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,19 +101,91 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FC6B5BDFCEC1FE6427291BE /* Pods_FSVideoPlayerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		91915F6B29CD5D77BEA888F9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AD8D756D82646C0C02929757 /* Pods_FSVideoPlayer.framework */,
+				EDA2BE21C6BC11B0DCE66ECB /* Pods_FSVideoPlayerTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B02724F420D3B8C200C60A74 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				B02724F520D3B8E300C60A74 /* UINavigationBar.swift */,
 				B02724F720D3BAEA00C60A74 /* UIAplication.swift */,
+				B027251620D3C8DE00C60A74 /* UIViewController.swift */,
+				B0F8268720D3CAF500FE849B /* UIColor.swift */,
+				B0F8268920D3CB9B00FE849B /* UIStackView.swift */,
+				B02DF6BC20D9325E00166223 /* Double.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B02724F920D3C8A800C60A74 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				B02724FA20D3C8B600C60A74 /* CustonAlertController */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		B02724FA20D3C8B600C60A74 /* CustonAlertController */ = {
+			isa = PBXGroup;
+			children = (
+				B02724FB20D3C8B600C60A74 /* ActionSheet */,
+				B02724FD20D3C8B600C60A74 /* AlertViewController */,
+				B027250320D3C8B600C60A74 /* AlertViews */,
+				B027250720D3C8B600C60A74 /* AlertControllerTransition.swift */,
+				B027250820D3C8B600C60A74 /* CustomAlertAction.swift */,
+				B027250920D3C8B600C60A74 /* CustomAlertController.swift */,
+			);
+			path = CustonAlertController;
+			sourceTree = "<group>";
+		};
+		B02724FB20D3C8B600C60A74 /* ActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				B02724FC20D3C8B600C60A74 /* CustomActionSheetController.swift */,
+			);
+			path = ActionSheet;
+			sourceTree = "<group>";
+		};
+		B02724FD20D3C8B600C60A74 /* AlertViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B02724FE20D3C8B600C60A74 /* CustomAlertView */,
+				B027250220D3C8B600C60A74 /* CustomAlertViewController.swift */,
+			);
+			path = AlertViewController;
+			sourceTree = "<group>";
+		};
+		B02724FE20D3C8B600C60A74 /* CustomAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				B02724FF20D3C8B600C60A74 /* AlertButtonBuilder.swift */,
+				B027250020D3C8B600C60A74 /* TextAlertBuilder.swift */,
+				B027250120D3C8B600C60A74 /* CustomAlertView.swift */,
+			);
+			path = CustomAlertView;
+			sourceTree = "<group>";
+		};
+		B027250320D3C8B600C60A74 /* AlertViews */ = {
+			isa = PBXGroup;
+			children = (
+				B027250420D3C8B600C60A74 /* CustomAlertHeaderView.swift */,
+				B027250520D3C8B600C60A74 /* CustomAlertTableViewCell.swift */,
+				B027250620D3C8B600C60A74 /* CancelButtonView.swift */,
+			);
+			path = AlertViews;
 			sourceTree = "<group>";
 		};
 		B0FC25DC20D25F3C009E72D4 = {
@@ -83,6 +194,8 @@
 				B0FC25E720D25F3C009E72D4 /* FSVideoPlayer */,
 				B0FC25FC20D25F3E009E72D4 /* FSVideoPlayerTests */,
 				B0FC25E620D25F3C009E72D4 /* Products */,
+				C5DC8BA11872695FA18C1ECB /* Pods */,
+				91915F6B29CD5D77BEA888F9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,6 +211,7 @@
 		B0FC25E720D25F3C009E72D4 /* FSVideoPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				B02724F920D3C8A800C60A74 /* Custom */,
 				B02724F420D3B8C200C60A74 /* Extensions */,
 				B0FC25E820D25F3C009E72D4 /* AppDelegate.swift */,
 				B0FC261720D2604C009E72D4 /* VideoPlayer */,
@@ -130,6 +244,17 @@
 			path = VideoPlayer;
 			sourceTree = "<group>";
 		};
+		C5DC8BA11872695FA18C1ECB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B2A4B11C22DA7074A576A2CE /* Pods-FSVideoPlayer.debug.xcconfig */,
+				A7EA69020C058B5649DBA1D9 /* Pods-FSVideoPlayer.release.xcconfig */,
+				F1E91E09B57425B2F8409266 /* Pods-FSVideoPlayerTests.debug.xcconfig */,
+				18064EFF09D663A865D875D9 /* Pods-FSVideoPlayerTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -137,9 +262,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B0FC260220D25F3E009E72D4 /* Build configuration list for PBXNativeTarget "FSVideoPlayer" */;
 			buildPhases = (
+				3DACF68A276135B39B4EF768 /* [CP] Check Pods Manifest.lock */,
 				B0FC25E120D25F3C009E72D4 /* Sources */,
 				B0FC25E220D25F3C009E72D4 /* Frameworks */,
 				B0FC25E320D25F3C009E72D4 /* Resources */,
+				7AACFC2C89DBE39B971AEBA7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -154,6 +281,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B0FC260520D25F3E009E72D4 /* Build configuration list for PBXNativeTarget "FSVideoPlayerTests" */;
 			buildPhases = (
+				73755DDBE488D0F5FDF771D6 /* [CP] Check Pods Manifest.lock */,
 				B0FC25F520D25F3E009E72D4 /* Sources */,
 				B0FC25F620D25F3E009E72D4 /* Frameworks */,
 				B0FC25F720D25F3E009E72D4 /* Resources */,
@@ -226,19 +354,91 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3DACF68A276135B39B4EF768 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FSVideoPlayer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		73755DDBE488D0F5FDF771D6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FSVideoPlayerTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7AACFC2C89DBE39B971AEBA7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-FSVideoPlayer/Pods-FSVideoPlayer-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoSwiftyM3U8/GoSwiftyM3U8.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoSwiftyM3U8.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FSVideoPlayer/Pods-FSVideoPlayer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B0FC25E120D25F3C009E72D4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				B0FC25E920D25F3C009E72D4 /* AppDelegate.swift in Sources */,
+				B0F8268820D3CAF500FE849B /* UIColor.swift in Sources */,
 				B0FC262920D2604D009E72D4 /* VideoPlayerViewController.swift in Sources */,
+				B027250B20D3C8B600C60A74 /* AlertButtonBuilder.swift in Sources */,
+				B027250F20D3C8B600C60A74 /* CustomAlertHeaderView.swift in Sources */,
+				B027251220D3C8B600C60A74 /* AlertControllerTransition.swift in Sources */,
 				B0FC262420D2604D009E72D4 /* VideoPlayerInteractor.swift in Sources */,
 				B0FC262520D2604D009E72D4 /* VideoPlayerRouter.swift in Sources */,
 				B02724F620D3B8E300C60A74 /* UINavigationBar.swift in Sources */,
+				B027250D20D3C8B600C60A74 /* CustomAlertView.swift in Sources */,
+				B027250E20D3C8B600C60A74 /* CustomAlertViewController.swift in Sources */,
+				B02DF6BD20D9325E00166223 /* Double.swift in Sources */,
+				B027250C20D3C8B600C60A74 /* TextAlertBuilder.swift in Sources */,
+				B027251320D3C8B600C60A74 /* CustomAlertAction.swift in Sources */,
+				B027251420D3C8B600C60A74 /* CustomAlertController.swift in Sources */,
+				B027251020D3C8B600C60A74 /* CustomAlertTableViewCell.swift in Sources */,
+				B027251720D3C8DE00C60A74 /* UIViewController.swift in Sources */,
 				B0FC262820D2604D009E72D4 /* VideoPlayerProtocols.swift in Sources */,
 				B0FC262620D2604D009E72D4 /* VideoPlayerPresenter.swift in Sources */,
 				B02724F820D3BAEA00C60A74 /* UIAplication.swift in Sources */,
+				B027251120D3C8B600C60A74 /* CancelButtonView.swift in Sources */,
+				B027250A20D3C8B600C60A74 /* CustomActionSheetController.swift in Sources */,
+				B0F8268A20D3CB9B00FE849B /* UIStackView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,6 +596,7 @@
 		};
 		B0FC260320D25F3E009E72D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B2A4B11C22DA7074A576A2CE /* Pods-FSVideoPlayer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -414,6 +615,7 @@
 		};
 		B0FC260420D25F3E009E72D4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A7EA69020C058B5649DBA1D9 /* Pods-FSVideoPlayer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -432,6 +634,7 @@
 		};
 		B0FC260620D25F3E009E72D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F1E91E09B57425B2F8409266 /* Pods-FSVideoPlayerTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -453,6 +656,7 @@
 		};
 		B0FC260720D25F3E009E72D4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 18064EFF09D663A865D875D9 /* Pods-FSVideoPlayerTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
