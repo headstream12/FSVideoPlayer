@@ -1,0 +1,6 @@
+framework module Pods_FSVideoPlayer {
+  umbrella header "Pods-FSVideoPlayer-umbrella.h"
+
+  export *
+  module * { export * }
+}

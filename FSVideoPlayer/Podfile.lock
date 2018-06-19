@@ -1,0 +1,16 @@
+PODS:
+  - GoSwiftyM3U8 (1.0.0)
+
+DEPENDENCIES:
+  - GoSwiftyM3U8 (~> 1.0.0)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - GoSwiftyM3U8
+
+SPEC CHECKSUMS:
+  GoSwiftyM3U8: 24c6ca77a150fc7f0cf17895ff11c9e8ff1e4d87
+
+PODFILE CHECKSUM: 38bbb5780ac0f182746d98101cf338862438d85a
+
+COCOAPODS: 1.5.0.beta.1
