@@ -40,7 +40,12 @@ class VideoPlayerInteractor: VideoPlayerInteractorInputProtocol {
                     }
                 }
                 DispatchQueue.main.async {
-                    self.presenter?.onParseUrlSuccess(preferredResolutionUrl: self.urls[Resolution.fullHd]!)
+                    if self.urls.count > 0 {
+                        self.presenter?.onParseUrlSuccess(preferredResolutionUrl: self.getPreferredResolutionUrl())
+                    } else {
+                        let error = NSError(domain: "Empty m3u8 file", code: 301, userInfo: nil)
+                        self.presenter?.onParseUrlError(error)
+                    }
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
@@ -48,6 +53,33 @@ class VideoPlayerInteractor: VideoPlayerInteractorInputProtocol {
                 }
             case .cancelled: break
             }
+        }
+    }
+    
+    func getPreferredResolutionUrl() -> URL {
+        let connectionType = NetworkStatus.getCurrentConnectionType()
+        
+        switch connectionType {
+        case "2G":
+            if let preferredUrl = self.urls[.low] {
+                return preferredUrl
+            } else {
+                return self.urls.first!.value
+            }
+        case "3G":
+            if let preferredUrl = self.urls[.hd] {
+                return preferredUrl
+            } else {
+                return self.urls.first!.value
+            }
+        case "4G":
+            if let preferredUrl = self.urls[.fullHd] {
+                return preferredUrl
+            } else {
+                return self.urls.first!.value
+            }
+        default:
+            return self.urls.first!.value
         }
     }
 }

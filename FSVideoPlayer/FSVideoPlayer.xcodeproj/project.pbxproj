@@ -24,6 +24,7 @@
 		B027251420D3C8B600C60A74 /* CustomAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B027250920D3C8B600C60A74 /* CustomAlertController.swift */; };
 		B027251720D3C8DE00C60A74 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B027251620D3C8DE00C60A74 /* UIViewController.swift */; };
 		B02DF6BD20D9325E00166223 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02DF6BC20D9325E00166223 /* Double.swift */; };
+		B03FB62320D93D47003D7DB3 /* NetworkStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03FB62220D93D47003D7DB3 /* NetworkStatus.swift */; };
 		B0F8268820D3CAF500FE849B /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F8268720D3CAF500FE849B /* UIColor.swift */; };
 		B0F8268A20D3CB9B00FE849B /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F8268920D3CB9B00FE849B /* UIStackView.swift */; };
 		B0FC25E920D25F3C009E72D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FC25E820D25F3C009E72D4 /* AppDelegate.swift */; };
@@ -67,6 +68,7 @@
 		B027250920D3C8B600C60A74 /* CustomAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAlertController.swift; sourceTree = "<group>"; };
 		B027251620D3C8DE00C60A74 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		B02DF6BC20D9325E00166223 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		B03FB62220D93D47003D7DB3 /* NetworkStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatus.swift; sourceTree = "<group>"; };
 		B0F8268720D3CAF500FE849B /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		B0F8268920D3CB9B00FE849B /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		B0FC25E520D25F3C009E72D4 /* FSVideoPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FSVideoPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -188,6 +190,14 @@
 			path = AlertViews;
 			sourceTree = "<group>";
 		};
+		B03FB62120D93D05003D7DB3 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				B03FB62220D93D47003D7DB3 /* NetworkStatus.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		B0FC25DC20D25F3C009E72D4 = {
 			isa = PBXGroup;
 			children = (
@@ -211,6 +221,7 @@
 		B0FC25E720D25F3C009E72D4 /* FSVideoPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				B03FB62120D93D05003D7DB3 /* Utils */,
 				B02724F920D3C8A800C60A74 /* Custom */,
 				B02724F420D3B8C200C60A74 /* Extensions */,
 				B0FC25E820D25F3C009E72D4 /* AppDelegate.swift */,
@@ -399,10 +410,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-FSVideoPlayer/Pods-FSVideoPlayer-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GoSwiftyM3U8/GoSwiftyM3U8.framework",
+				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoSwiftyM3U8.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -420,6 +433,7 @@
 				B0F8268820D3CAF500FE849B /* UIColor.swift in Sources */,
 				B0FC262920D2604D009E72D4 /* VideoPlayerViewController.swift in Sources */,
 				B027250B20D3C8B600C60A74 /* AlertButtonBuilder.swift in Sources */,
+				B03FB62320D93D47003D7DB3 /* NetworkStatus.swift in Sources */,
 				B027250F20D3C8B600C60A74 /* CustomAlertHeaderView.swift in Sources */,
 				B027251220D3C8B600C60A74 /* AlertControllerTransition.swift in Sources */,
 				B0FC262420D2604D009E72D4 /* VideoPlayerInteractor.swift in Sources */,
@@ -602,10 +616,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YJ7WEU84RH;
 				INFOPLIST_FILE = FSVideoPlayer/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = IG.FSVideoPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -621,10 +632,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YJ7WEU84RH;
 				INFOPLIST_FILE = FSVideoPlayer/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = IG.FSVideoPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -641,11 +649,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YJ7WEU84RH;
 				INFOPLIST_FILE = FSVideoPlayerTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = IG.FSVideoPlayerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -663,11 +667,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YJ7WEU84RH;
 				INFOPLIST_FILE = FSVideoPlayerTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = IG.FSVideoPlayerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

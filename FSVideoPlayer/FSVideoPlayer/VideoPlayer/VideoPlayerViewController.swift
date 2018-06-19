@@ -42,6 +42,10 @@ class VideoPlayerViewController: UIViewController {
         
         player = AVPlayer(url: URL(string: "https://www.123test123.ru")!)
         player.currentItem?.addObserver(self, forKeyPath: "duration", options: [.new, .initial], context: nil)
+        player.currentItem?.addObserver(self, forKeyPath: "playbackBufferEmpty", options: .new, context: nil)
+        player.currentItem?.addObserver(self, forKeyPath: "playbackLikelyToKeepUp", options: .new, context: nil)
+        player.currentItem?.addObserver(self, forKeyPath: "playbackBufferFull", options: .new, context: nil)
+        
         addTimeObserver()
         
         playerLayer = AVPlayerLayer(player: nil)
@@ -77,7 +81,6 @@ class VideoPlayerViewController: UIViewController {
         let mainQueue = DispatchQueue.main
         _ = player.addPeriodicTimeObserver(forInterval: interval, queue: mainQueue, using: { [weak self] time in
             guard let currentItem = self?.player.currentItem else {return}
-            //self?.timeSlider.maximumValue = Float(currentItem.duration.seconds)
             self?.currentTime = currentItem.currentTime()
             self?.timeSlider.minimumValue = 0
             self?.timeSlider.value = Float(currentItem.currentTime().seconds)
@@ -96,6 +99,18 @@ class VideoPlayerViewController: UIViewController {
         if keyPath == "duration", let duration = player.currentItem?.duration.seconds, duration > 0.0 {
             self.durationLabel.text = presenter.getTimeString(from: player.currentItem!.duration)
             self.timeSlider.maximumValue = Float(player.currentItem!.duration.seconds)
+        }
+        
+        if object is AVPlayerItem {
+            switch keyPath {
+            case "playbackBufferEmpty":
+                showIndicator()
+            case "playbackLikelyToKeepUp":
+                hideIndicator()
+            case "playbackBufferFull":
+                hideIndicator()
+            default: break
+            }
         }
     }
     
@@ -152,7 +167,10 @@ class VideoPlayerViewController: UIViewController {
 extension VideoPlayerViewController: VideoPlayerViewProtocol {
     func playVideoWithUrl(_ url: URL) {
         player.currentItem?.removeObserver(self, forKeyPath: "duration")
-
+        player.currentItem?.removeObserver(self, forKeyPath: "playbackBufferEmpty")
+        player.currentItem?.removeObserver(self, forKeyPath: "playbackLikelyToKeepUp")
+        player.currentItem?.removeObserver(self, forKeyPath: "playbackBufferFull")
+        
         let newItem = AVPlayerItem(url: url)
         if currentTime != nil {
             newItem.seek(to: currentTime!, toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero, completionHandler: nil)
@@ -160,6 +178,9 @@ extension VideoPlayerViewController: VideoPlayerViewProtocol {
         
         player.replaceCurrentItem(with: newItem)
         player.currentItem?.addObserver(self, forKeyPath: "duration", options: [.new, .initial], context: nil)
+        player.currentItem?.addObserver(self, forKeyPath: "playbackBufferEmpty", options: .new, context: nil)
+        player.currentItem?.addObserver(self, forKeyPath: "playbackLikelyToKeepUp", options: .new, context: nil)
+        player.currentItem?.addObserver(self, forKeyPath: "playbackBufferFull", options: .new, context: nil)
         
         if playerLayer.player == nil {
             playerLayer.player = player

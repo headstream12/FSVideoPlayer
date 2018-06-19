@@ -7,8 +7,18 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 extension UIViewController {
+    
+    func showIndicator() {
+        NVActivityIndicatorPresenter.sharedInstance.startAnimating(ActivityData())
+    }
+    
+    func hideIndicator() {
+        NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+    }
+    
     func showVariants(title: String, cancelText: String, variants: [(text: String, action: ((CustomAlertAction) ->Void)?)]) {
         let alertVC = CustomAlertController.create(title: title,
                                                    message: nil,
@@ -20,4 +30,6 @@ extension UIViewController {
         alertVC.addAction(action: CustomAlertAction(title: cancelText, style: .cancel, handler: nil))
         self.present(alertVC, animated: true, completion: nil)
     }
+    
+    
 }

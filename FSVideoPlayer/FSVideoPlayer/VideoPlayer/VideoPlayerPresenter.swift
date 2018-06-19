@@ -47,7 +47,9 @@ class VideoPlayerPresenter: VideoPlayerPresenterProtocol {
         
         variants = variants?.sorted(by: { Float($0.text) ?? 0 < Float($1.text) ?? 0})
         
-        let variantAuto: (text: String, action: ((CustomAlertAction) ->Void)?) = (text: "Auto", action: nil)
+        let variantAuto: (text: String, action: ((CustomAlertAction) ->Void)?) = (text: "Auto", action: { [unowned self] _ in
+            self.view?.playVideoWithUrl(self.interactor!.getPreferredResolutionUrl())
+        })
         variants?.insert(variantAuto, at: 0)
         
         view?.showVariants(title: "Select the quality option", cancelText: "Cancel", variants: variants ?? [])

@@ -1,16 +1,22 @@
 PODS:
   - GoSwiftyM3U8 (1.0.0)
+  - NVActivityIndicatorView (4.0.1):
+    - NVActivityIndicatorView/Presenter (= 4.0.1)
+  - NVActivityIndicatorView/Presenter (4.0.1)
 
 DEPENDENCIES:
   - GoSwiftyM3U8 (~> 1.0.0)
+  - NVActivityIndicatorView (~> 4.0.0)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - GoSwiftyM3U8
+    - NVActivityIndicatorView
 
 SPEC CHECKSUMS:
   GoSwiftyM3U8: 24c6ca77a150fc7f0cf17895ff11c9e8ff1e4d87
+  NVActivityIndicatorView: 77ed6d7b571643e24899e7858bf9ae2ee4c21f31
 
-PODFILE CHECKSUM: 38bbb5780ac0f182746d98101cf338862438d85a
+PODFILE CHECKSUM: 794544ce432b887203c9c02f98446a1e255708f8
 
 COCOAPODS: 1.5.0.beta.1

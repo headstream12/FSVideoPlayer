@@ -38,6 +38,7 @@ protocol VideoPlayerInteractorInputProtocol: class {
     
     func chooseResolution(_ resolution: VideoPlayerInteractor.Resolution)
     func parsePlaylistWithUrl(_ url: URL)
+    func getPreferredResolutionUrl() -> URL 
     /* Presenter -> Interactor */
 }
 
