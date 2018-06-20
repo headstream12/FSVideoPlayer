@@ -1,5 +1,5 @@
 //
-//  NetworkStatus.swift
+//  NetworkConnectionStatus.swift
 //  FSVideoPlayer
 //
 //  Created by Ilya Glazunov on 19/06/2018.
@@ -8,8 +8,9 @@
 
 import Foundation
 import CoreTelephony
+import Reachability
 
-struct NetworkStatus {
+struct NetworkConnectionStatus {
     enum RadioAccessTechnology: String {
         case cdma = "CTRadioAccessTechnologyCDMA1x"
         case edge = "CTRadioAccessTechnologyEdge"
@@ -23,27 +24,42 @@ struct NetworkStatus {
         case revB = "CTRadioAccessTechnologyCDMAEVDORevB"
         case wcdma = "CTRadioAccessTechnologyWCDMA"
         
-        var description: String {
+        enum ConnectionType {
+            case wwan2g
+            case wwan3g
+            case wwan4g
+            case wifi
+            case noConnection
+            case unknown
+        }
+        
+        var description: ConnectionType {
             switch self {
             case .gprs, .edge, .cdma:
-                return "2G"
+                return .wwan2g
             case .lte:
-                return "4G"
+                return .wwan4g
             default:
-                return "3G"
+                return .wwan3g
             }
         }
     }
     
-    static func getCurrentConnectionType() -> String {
+    static func getCurrentConnectionType() -> RadioAccessTechnology.ConnectionType {
+        
+        let reachability = Reachability()
+        let connection = reachability?.connection
+        if connection == .wifi {
+            return .wifi
+        }
+        
         let networkInfo = CTTelephonyNetworkInfo()
         let network = networkInfo.currentRadioAccessTechnology
         guard let networkString = network else {
-            return "none"
+            return .noConnection
         }
         let tecnology = RadioAccessTechnology(rawValue: networkString)
        
-        print("Вы сидите через \(tecnology!.description)")
         return tecnology!.description
     }
 }

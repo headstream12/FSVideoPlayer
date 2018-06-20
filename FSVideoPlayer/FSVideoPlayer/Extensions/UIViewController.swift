@@ -12,7 +12,7 @@ import NVActivityIndicatorView
 extension UIViewController {
     
     func showIndicator() {
-        NVActivityIndicatorPresenter.sharedInstance.startAnimating(ActivityData())
+        NVActivityIndicatorPresenter.sharedInstance.startAnimating(ActivityData(backgroundColor: .clear))
     }
     
     func hideIndicator() {

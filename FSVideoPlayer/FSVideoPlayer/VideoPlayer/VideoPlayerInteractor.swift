@@ -57,22 +57,28 @@ class VideoPlayerInteractor: VideoPlayerInteractorInputProtocol {
     }
     
     func getPreferredResolutionUrl() -> URL {
-        let connectionType = NetworkStatus.getCurrentConnectionType()
+        let connectionType = NetworkConnectionStatus.getCurrentConnectionType()
         
         switch connectionType {
-        case "2G":
+        case .wwan2g:
             if let preferredUrl = self.urls[.low] {
                 return preferredUrl
             } else {
                 return self.urls.first!.value
             }
-        case "3G":
+        case .wwan3g:
+            if let preferredUrl = self.urls[.medium] {
+                return preferredUrl
+            } else {
+                return self.urls.first!.value
+            }
+        case .wwan4g:
             if let preferredUrl = self.urls[.hd] {
                 return preferredUrl
             } else {
                 return self.urls.first!.value
             }
-        case "4G":
+        case .wifi:
             if let preferredUrl = self.urls[.fullHd] {
                 return preferredUrl
             } else {

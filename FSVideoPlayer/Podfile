@@ -6,6 +6,7 @@ target 'FSVideoPlayer' do
   use_frameworks!
   pod 'GoSwiftyM3U8', '~> 1.0.0'
   pod 'NVActivityIndicatorView', '~> 4.0.0'
+  pod 'ReachabilitySwift'
 
   # Pods for FSVideoPlayer
 
