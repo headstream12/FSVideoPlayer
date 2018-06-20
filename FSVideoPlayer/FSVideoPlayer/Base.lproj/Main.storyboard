@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -30,7 +30,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="eha-pi-1LC">
-                                        <rect key="frame" x="67" y="597.5" width="201" height="31"/>
+                                        <rect key="frame" x="67" y="597.5" width="200" height="31"/>
                                         <color key="minimumTrackTintColor" red="0.93333333330000001" green="0.70588235290000001" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="thumbTintColor" red="0.93333333330000001" green="0.70588235290000001" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
@@ -44,20 +44,12 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tBy-8y-TF8">
-                                        <rect key="frame" x="281" y="604.5" width="34" height="15"/>
+                                        <rect key="frame" x="280" y="604.5" width="34" height="15"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gTY-dv-UK4">
-                                        <rect key="frame" x="335" y="602" width="20" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="0dN-D4-SVP"/>
-                                            <constraint firstAttribute="width" constant="20" id="bzr-4Z-BLc"/>
-                                        </constraints>
-                                        <state key="normal" image="fullscreenIcon"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JhX-gh-CZr">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JhX-gh-CZr">
                                         <rect key="frame" x="148" y="284" width="79" height="79"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="79" id="GuA-Bm-SWB"/>
@@ -77,14 +69,25 @@
                                         </textAttributes>
                                         <items>
                                             <navigationItem title="Title" id="0iA-eY-3j5">
-                                                <barButtonItem key="rightBarButtonItem" image="settingIcon" id="wd7-cd-a9g">
+                                                <barButtonItem key="leftBarButtonItem" id="EgF-h8-D9R">
                                                     <connections>
-                                                        <action selector="onSettingButtonClick:" destination="BYZ-38-t0r" id="Z4t-oc-fdw"/>
+                                                        <action selector="onCloseButtonClick:" destination="BYZ-38-t0r" id="dhd-ri-T4u"/>
                                                     </connections>
                                                 </barButtonItem>
                                             </navigationItem>
                                         </items>
                                     </navigationBar>
+                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gTY-dv-UK4">
+                                        <rect key="frame" x="314" y="590" width="53" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="0dN-D4-SVP"/>
+                                            <constraint firstAttribute="width" constant="53" id="bzr-4Z-BLc"/>
+                                        </constraints>
+                                        <state key="normal" image="settingIcon"/>
+                                        <connections>
+                                            <action selector="onSettingButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9jS-Fk-qP3"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.23999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -92,16 +95,16 @@
                                     <constraint firstItem="GWr-EW-fp1" firstAttribute="leading" secondItem="k9F-4D-nid" secondAttribute="leading" constant="20" id="8oe-zC-Nvf"/>
                                     <constraint firstItem="eha-pi-1LC" firstAttribute="leading" secondItem="GWr-EW-fp1" secondAttribute="trailing" constant="15" id="9rj-kR-Jhc"/>
                                     <constraint firstAttribute="trailing" secondItem="rDz-N6-aOI" secondAttribute="trailing" id="BQx-DP-4VE"/>
+                                    <constraint firstItem="gTY-dv-UK4" firstAttribute="centerY" secondItem="tBy-8y-TF8" secondAttribute="centerY" id="CO2-IP-dLe"/>
                                     <constraint firstItem="tBy-8y-TF8" firstAttribute="leading" secondItem="eha-pi-1LC" secondAttribute="trailing" constant="15" id="F12-yI-wPU"/>
                                     <constraint firstItem="JhX-gh-CZr" firstAttribute="centerY" secondItem="k9F-4D-nid" secondAttribute="centerY" id="FFC-0a-Xdd"/>
-                                    <constraint firstAttribute="bottom" secondItem="gTY-dv-UK4" secondAttribute="bottom" constant="25" id="KGS-fi-eat"/>
                                     <constraint firstItem="JhX-gh-CZr" firstAttribute="centerX" secondItem="k9F-4D-nid" secondAttribute="centerX" id="KTB-1t-o6R"/>
                                     <constraint firstItem="rDz-N6-aOI" firstAttribute="leading" secondItem="k9F-4D-nid" secondAttribute="leading" id="PPj-oR-0cK"/>
                                     <constraint firstItem="rDz-N6-aOI" firstAttribute="top" secondItem="k9F-4D-nid" secondAttribute="top" id="WPo-8d-L2F"/>
                                     <constraint firstAttribute="bottom" secondItem="tBy-8y-TF8" secondAttribute="bottom" constant="27.5" id="g6n-NP-dSO"/>
                                     <constraint firstAttribute="bottom" secondItem="eha-pi-1LC" secondAttribute="bottom" constant="19.5" id="lN7-uN-XR9"/>
-                                    <constraint firstAttribute="trailing" secondItem="gTY-dv-UK4" secondAttribute="trailing" constant="20" id="mmf-63-Wc1"/>
-                                    <constraint firstItem="gTY-dv-UK4" firstAttribute="leading" secondItem="tBy-8y-TF8" secondAttribute="trailing" constant="20" id="sHq-FB-5bh"/>
+                                    <constraint firstAttribute="trailing" secondItem="gTY-dv-UK4" secondAttribute="trailing" constant="8" id="mmf-63-Wc1"/>
+                                    <constraint firstItem="gTY-dv-UK4" firstAttribute="leading" secondItem="tBy-8y-TF8" secondAttribute="trailing" id="sHq-FB-5bh"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -119,12 +122,12 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="closeButton" destination="EgF-h8-D9R" id="fc6-sb-Px2"/>
                         <outlet property="controlView" destination="k9F-4D-nid" id="moC-lh-6wC"/>
                         <outlet property="currentTimeLabel" destination="GWr-EW-fp1" id="cg6-Y5-kK7"/>
                         <outlet property="durationLabel" destination="tBy-8y-TF8" id="AwK-zm-OTc"/>
                         <outlet property="navigationBar" destination="rDz-N6-aOI" id="Dcl-qf-WKI"/>
                         <outlet property="playButton" destination="JhX-gh-CZr" id="4Gz-rU-lya"/>
-                        <outlet property="settingButton" destination="wd7-cd-a9g" id="BQh-dW-7nC"/>
                         <outlet property="timeSlider" destination="eha-pi-1LC" id="bwm-Ea-6qI"/>
                         <outlet property="videoView" destination="cUF-vD-BS0" id="mlI-yp-Eub"/>
                     </connections>
@@ -135,7 +138,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="fullscreenIcon" width="24" height="24"/>
         <image name="playIcon" width="96" height="96"/>
         <image name="settingIcon" width="24" height="24"/>
     </resources>

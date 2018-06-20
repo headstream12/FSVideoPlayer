@@ -31,5 +31,10 @@ extension UIViewController {
         self.present(alertVC, animated: true, completion: nil)
     }
     
+    func giveVibroFeedback(style: UIImpactFeedbackStyle) {
+        let generator = UIImpactFeedbackGenerator(style: style)
+        generator.impactOccurred()
+    }
+    
     
 }

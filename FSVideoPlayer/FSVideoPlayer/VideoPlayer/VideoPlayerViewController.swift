@@ -20,7 +20,7 @@ class VideoPlayerViewController: UIViewController {
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var controlView: UIView!
     @IBOutlet weak var navigationBar: UINavigationBar!
-    @IBOutlet weak var settingButton: UIBarButtonItem!
+    @IBOutlet weak var closeButton: UIBarButtonItem!
     
     private var controlTimer: Timer?
     private var isVideoPlaying = false
@@ -56,7 +56,8 @@ class VideoPlayerViewController: UIViewController {
         tap.delegate = self
         view.addGestureRecognizer(tap)
         
-        settingButton.image = #imageLiteral(resourceName: "settingIcon").withRenderingMode(.alwaysOriginal)
+        closeButton.image = #imageLiteral(resourceName: "closeIcon").withRenderingMode(.alwaysOriginal)
+        
         presenter?.viewDidLoadWith(url: playlistUrl)
     }
     
@@ -126,11 +127,18 @@ class VideoPlayerViewController: UIViewController {
         playAction()
     }
     
-    @IBAction func onSettingButtonClick(_ sender: UIBarButtonItem) {
+    @IBAction func onSettingButtonClick(_ sender: UIButton) {
         presenter?.onSettingButtonClick()
     }
     
+    @IBAction func onCloseButtonClick(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     private func playAction() {
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
+        
         if isVideoPlaying {
             isVideoPlaying = !isVideoPlaying
             player.pause()
